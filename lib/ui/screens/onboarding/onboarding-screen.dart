@@ -1,11 +1,11 @@
+import 'package:f2_base_project/core/enums/view_state.dart';
+import 'package:f2_base_project/core/services/shared_prefs_service.dart';
+import 'package:f2_base_project/ui/screens/home/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:tripmate2_0/core/constants/text_styles.dart';
-import 'package:tripmate2_0/core/enums/view_state.dart';
-import 'package:tripmate2_0/core/others/locator.dart';
-import 'package:tripmate2_0/core/services/sharedPrefsHelper.dart';
-import 'package:tripmate2_0/ui/pages/onboarding/onboarding_model.dart';
-import 'package:tripmate2_0/ui/pages/root-page.dart';
+
+import '../../../locator.dart';
+import 'onboarding_model.dart';
 
 class OnBoardingScreen extends StatelessWidget {
   @override
@@ -74,7 +74,7 @@ class NextButton extends StatelessWidget {
           child: Text(
             'NEXT',
             textAlign: TextAlign.right,
-            style: onBoardingNextTS,
+            // style: onBoardingNextTS,
           ),
         ),
         onTap: () {
@@ -97,7 +97,7 @@ class PreviousButton extends StatelessWidget {
           width: 65,
           child: Text(
             'PREVIOUS',
-            style: onBoardingPreviousTS,
+            // style: onBoardingPreviousTS,
           ),
         ),
         onTap: () {
@@ -120,14 +120,14 @@ class FinishButton extends StatelessWidget {
         child: Text(
           'FINISH',
           textAlign: TextAlign.right,
-          style: onBoardingNextTS,
+          // style: onBoardingNextTS,
         ),
       ),
       onTap: () async {
         await locator<SharedPrefsService>().setOnboardingPageCount(4);
         Navigator.pushAndRemoveUntil(
             context,
-            MaterialPageRoute(builder: (context) => RootScreen()),
+            MaterialPageRoute(builder: (context) => HomeScreen()),
             (r) => false);
       },
     );

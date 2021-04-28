@@ -1,28 +1,29 @@
 import 'package:flutter/material.dart';
 // import 'package:tripmate2_0/core/constants/text_styles.dart';
 
-class OnboardingScreen1 extends StatelessWidget {
+class OnboardingScreen3 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+//        backgroundColor: Colors.yellow,
         body: Column(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: <Widget>[
         Padding(
           padding: const EdgeInsets.only(top: 40),
           child: Image.asset(
-            'assets/static_assets/onboarding-img1.png',
+            'assets/static_assets/onboarding-img3.png',
             height: 264,
           ),
         ),
         Column(
           children: <Widget>[
             Text(
-              'Welcome to the new TripMate',
+              'Find attractions to explore',
               // style: onBoardingBlueTS,
             ),
             Text(
-              'Cleaner. Smarter. Faster',
+              'Like a native',
               // style: onBoardingBodyTS,
             ),
           ],
@@ -30,7 +31,7 @@ class OnboardingScreen1 extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 3),
           child: Text(
-            'TripMate 2.0 is here! Redesigned to provide you memorable travel experiences.',
+            'Find attractions to explore and feel\n like a native with TripMate.',
             textAlign: TextAlign.center,
             // style: onBoardingBodyTS,
           ),

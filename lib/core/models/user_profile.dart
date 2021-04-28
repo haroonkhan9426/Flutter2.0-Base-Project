@@ -8,4 +8,9 @@ class UserProfile {
     this.userName = json['userName'];
     this.email = json['email'];
   }
+
+  toJson() => {
+        'email': this.email,
+        'userName': this.userName,
+      };
 }

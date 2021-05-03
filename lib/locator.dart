@@ -9,7 +9,6 @@ GetIt locator = GetIt.instance;
 setupLocator() {
   locator.registerSingleton(ApiServices());
 
-  locator.registerSingleton(AuthService());
-
   locator.registerLazySingleton<DatabaseService>(() => DatabaseService());
+  locator.registerSingleton(AuthService());
 }

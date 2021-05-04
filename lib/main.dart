@@ -1,17 +1,18 @@
+import 'package:f2_base_project/core/others/localization_class.dart';
 import 'package:flutter/material.dart';
-import 'package:easy_localization/easy_localization.dart';
+import 'package:get/route_manager.dart';
+import 'package:get/get.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await EasyLocalization.ensureInitialized();
 
-  runApp(
-    EasyLocalization(
-        supportedLocales: [Locale('en'), Locale('ar')],
-        path: 'assets/translations', // Translations path
-        fallbackLocale: Locale('ar'),
-        child: MyApp()),
-  );
+  runApp(MyApp()
+      // EasyLocalization(
+      //     supportedLocales: [Locale('en'), Locale('ar')],
+      //     path: 'assets/translations', // Translations path
+      //     fallbackLocale: Locale('ar'),
+      //     child: MyApp()),
+      );
 }
 
 class MyApp extends StatefulWidget {
@@ -23,11 +24,9 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      localizationsDelegates: context.localizationDelegates,
-      supportedLocales: context.supportedLocales,
-      locale: context.locale,
+    return GetMaterialApp(
+      translations: LocalizationClass(),
+      locale: Locale('en'),
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -49,12 +48,13 @@ class _HomePageState extends State<HomePage> {
             child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text('hello'.tr()),
-        context.locale.languageCode == 'en'
+        Text('hello'.tr),
+        Get.locale?.languageCode == 'en'
             ? ElevatedButton(
                 child: Text('Change to Arabic'),
                 onPressed: () {
-                  context.setLocale(Locale('ar'));
+                  final arabic = Locale('ar');
+                  Get.updateLocale(arabic);
                   // setState(() {
                   //   context.setLocale();
                   // });
@@ -63,7 +63,8 @@ class _HomePageState extends State<HomePage> {
             : ElevatedButton(
                 child: Text('Change to English'),
                 onPressed: () {
-                  context.setLocale(Locale('en'));
+                  final english = Locale('en');
+                  Get.updateLocale(english);
                 },
               )
       ],
